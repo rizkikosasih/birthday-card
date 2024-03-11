@@ -2,7 +2,9 @@ import { Button } from '@material-tailwind/react';
 import z404z from './../assets/svg/z404z.svg';
 import { Link } from 'react-router-dom';
 
-const PageNotFound = () => {
+const PageNotFound = ({ audioRef }) => {
+  audioRef.current.pause();
+
   return (
     <div className="centered-content">
       <img src={z404z} loading="lazy" className="w-60 h-60" />

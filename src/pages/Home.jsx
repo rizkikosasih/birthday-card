@@ -1,14 +1,10 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import Opening from '../components/Opening';
 import { mySwal } from '../constants';
 import Greeting from '../components/Greeting';
-import bgMusic from '../assets/music/hbd-piano.mp3';
 
-const Home = () => {
-  const audioRef = useRef(new Audio(bgMusic));
-  audioRef.current.volume = 1;
-  audioRef.current.loop = true;
-
+const Home = ({ audioRef }) => {
+  audioRef.current.pause();
   const [data, setData] = useState({ open: false, name: null });
   const { open, name, stage = 0 } = data;
 
