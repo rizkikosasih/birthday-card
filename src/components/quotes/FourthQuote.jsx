@@ -33,7 +33,7 @@ const FourthQuote = ({ data, setData }) => {
           })
           .then(() => {
             const textWA = encodeURIComponent(`Terima kasih ya ucapannya! :)`);
-            location.href = `https://api.whatsapp.com/send?phone=${myNumber}&text=${textWA}`;
+            window.open(`https://api.whatsapp.com/send?phone=${myNumber}&text=${textWA}`);
           });
       }
     };
