@@ -70,7 +70,7 @@ const Greeting = ({ data, setData }) => {
 
           {stage === 2 && <ThirdQuote data={data} setData={setData} />}
 
-          {stage === 3 && <FourthQuote data={data} />}
+          {stage >= 3 && <FourthQuote data={data} setData={setData} />}
         </blockquote>
       </Animate>
     </div>

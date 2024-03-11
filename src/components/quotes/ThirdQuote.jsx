@@ -2,7 +2,7 @@ import { Button } from '@material-tailwind/react';
 import { useEffect, useRef, useState } from 'react';
 import { Animate } from 'react-simple-animate';
 import TypeIt from 'typeit-react';
-import { MySwal, catForYou, catPeekABoo } from '../../constants';
+import { mySwal, catForYou, catPeekABoo } from '../../constants';
 
 const ThirdQuote = ({ data, setData }) => {
   const thirdRef = useRef(null);
@@ -11,50 +11,54 @@ const ThirdQuote = ({ data, setData }) => {
 
   useEffect(() => {
     const handleButtonNext = (evt) => {
-      evt.currentTarget.classList.remove('show');
-      evt.currentTarget.classList.add('hidden');
+      if (thirdStage === 6) {
+        evt.currentTarget.classList.remove('show');
+        evt.currentTarget.classList.add('hidden');
 
-      MySwal.fire({
-        imageUrl: catPeekABoo,
-        imageWidth: 150,
-        imageHeight: 150,
-        allowOutsideClick: false,
-        allowEscapeKey: false,
-        showCancelButton: true,
-        showConfirmButton: true,
-        confirmButtonColor: '#378CE7',
-        cancelButtonColor: '#FF407D',
-        confirmButtonText: 'Mau',
-        cancelButtonText: 'Engga',
-        title: `${name}, mau kado gak nih? 🫣`,
-        html: `<span>Ayo jawab 😆</span>`,
-        customClass: {
-          title: 'text-sm sm:text-lg md:text-xl',
-          image: 'rounded-full shadow-lg'
-        }
-      }).then((result) => {
-        MySwal.fire({
-          imageUrl: catForYou,
-          imageWidth: 150,
-          imageHeight: 150,
-          allowEnterKey: false,
-          allowOutsideClick: false,
-          allowEscapeKey: false,
-          showCancelButton: false,
-          showConfirmButton: false,
-          title: result.isConfirmed
-            ? 'Gajadi deh soalnya kamu bau wleee 😜'
-            : 'Yaudah kalo gamau mah 😅',
-          timer: 3000,
-          timerProgressBar: true,
-          customClass: {
-            title: 'text-sm sm:text-lg md:text-xl',
-            image: 'rounded-full shadow-lg'
-          },
-          willClose: () =>
-            setData({ ...data, ...{ stage: 3, isConfirmed: result.isConfirmed } })
-        });
-      });
+        mySwal
+          .fire({
+            imageUrl: catPeekABoo,
+            imageWidth: 150,
+            imageHeight: 150,
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            showCancelButton: true,
+            showConfirmButton: true,
+            confirmButtonColor: '#378CE7',
+            cancelButtonColor: '#FF407D',
+            confirmButtonText: 'Mau',
+            cancelButtonText: 'Engga',
+            title: `${name}, mau kado gak nih? 🫣`,
+            html: `<span>Ayo jawab 😆</span>`,
+            customClass: {
+              title: 'text-sm sm:text-lg md:text-xl',
+              image: 'rounded-full shadow-lg'
+            }
+          })
+          .then((result) => {
+            mySwal.fire({
+              imageUrl: catForYou,
+              imageWidth: 150,
+              imageHeight: 150,
+              allowEnterKey: false,
+              allowOutsideClick: false,
+              allowEscapeKey: false,
+              showCancelButton: false,
+              showConfirmButton: false,
+              title: result.isConfirmed
+                ? 'Gajadi deh soalnya kamu bau wleee 😜'
+                : 'Yaudah kalo gamau mah 😅',
+              timer: 3000,
+              timerProgressBar: true,
+              customClass: {
+                title: 'text-sm sm:text-lg md:text-xl',
+                image: 'rounded-full shadow-lg'
+              },
+              willClose: () =>
+                setData({ ...data, ...{ stage: 3, isConfirmed: result.isConfirmed } })
+            });
+          });
+      }
     };
 
     const btnNext = document.querySelector('.btn-next');
@@ -63,13 +67,13 @@ const ThirdQuote = ({ data, setData }) => {
     return () => {
       btnNext.removeEventListener('click', handleButtonNext);
     };
-  }, []);
+  }, [thirdStage]);
 
   return (
     <div className="third-quote" ref={thirdRef}>
       <Animate play={stage === 2} start={{ opacity: 0 }} end={{ opacity: 1 }}>
         <TypeIt
-          className="font-semibold"
+          className="text-lg"
           options={{
             afterComplete: (instance) => {
               instance.cursor.style.display = 'none';
@@ -162,7 +166,7 @@ const ThirdQuote = ({ data, setData }) => {
           variant="gradient"
           color="white"
           size="sm"
-          className={`btn-next rounded-full ${thirdStage === 6 ? 'show' : 'hidden'}`}>
+          className={`btn-next rounded-full ${thirdStage === 6 ? 'show cursor-pointer' : 'hidden cursor-default'}`}>
           &#128140; lanjut
         </Button>
       </Animate>
