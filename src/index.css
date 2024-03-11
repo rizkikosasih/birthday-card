@@ -53,7 +53,7 @@ body {
 
   img.wallpaper {
     content: url('/src/assets/gif/starGalaxy.gif');
-    @apply bg-cover w-full transition-all duration-[1.5s];
+    @apply bg-cover w-full min-h-screen transition-all duration-[1.5s];
   }
 
   .opening-image {
