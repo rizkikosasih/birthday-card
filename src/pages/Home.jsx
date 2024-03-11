@@ -1,17 +1,17 @@
 import { useEffect, useState } from 'react';
 import Opening from '../components/Opening';
-import { MySwal } from '../constants';
-import ParallaxStars from '../components/ParallaxStars';
+import { mySwal } from '../constants';
 import Greeting from '../components/Greeting';
 
 const Home = () => {
   const [data, setData] = useState({ open: false, name: null });
+  const { open, name, stage = 0 } = data;
 
   // const hmr = import.meta.hot;
   // hmr.on('vite:beforeUpdate', () => setData({ open: false, name: null }));
 
   const showInputName = async () => {
-    const { value: inputName } = await MySwal.fire({
+    const { value: inputName } = await mySwal.fire({
       title: 'Masukkan Nama Kamu',
       input: 'text',
       inputPlaceholder: 'Nama Kamu',
@@ -27,29 +27,38 @@ const Home = () => {
     if (inputName && inputName.trim()) {
       setData({ open: data.open, name: inputName });
     } else {
-      MySwal.fire({
-        icon: 'error',
-        title: 'Ups',
-        html: `Masukin nama kamu<br/>Terlebih dahulu ya!`,
-        showConfirmButton: true,
-        confirmButtonColor: '#378CE7'
-      }).then(() => showInputName());
+      mySwal
+        .fire({
+          icon: 'error',
+          title: 'Ups',
+          html: `Masukin nama kamu<br/>Terlebih dahulu ya!`,
+          showConfirmButton: true,
+          confirmButtonColor: '#378CE7'
+        })
+        .then(() => showInputName());
     }
   };
 
   useEffect(() => {
-    if (data.open && !data.name) {
+    if (open && !name) {
       setTimeout(() => showInputName(), 250);
+    }
+
+    const wallpaper = document.querySelector('.wallpaper');
+    if (stage % 2 === 1) {
+      wallpaper.style.transform = 'scale(1.3)';
+    } else {
+      wallpaper.style.transform = 'scale(1)';
     }
   }, [data]);
 
   return (
-    <div className="container-parallax-stars overflow-hidden">
-      <ParallaxStars />
+    <div className="container-parallax-stars">
+      <img loading="lazy" className="wallpaper" />
 
       <Opening data={data} setData={setData} />
 
-      {data.open && data.name && <Greeting data={data} setData={setData} />}
+      {open && name && <Greeting data={data} setData={setData} />}
     </div>
   );
 };
