@@ -1,14 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import Opening from '../components/Opening';
 import { mySwal } from '../constants';
 import Greeting from '../components/Greeting';
+import bgMusic from '../assets/music/hbd-piano.mp3';
 
 const Home = () => {
+  const audioRef = useRef(new Audio(bgMusic));
+  audioRef.current.volume = 1;
+  audioRef.current.loop = true;
+
   const [data, setData] = useState({ open: false, name: null });
   const { open, name, stage = 0 } = data;
-
-  // const hmr = import.meta.hot;
-  // hmr.on('vite:beforeUpdate', () => setData({ open: false, name: null }));
 
   const showInputName = async () => {
     const { value: inputName } = await mySwal.fire({
@@ -42,6 +44,10 @@ const Home = () => {
   useEffect(() => {
     if (open && !name) {
       setTimeout(() => showInputName(), 250);
+    }
+
+    if (stage > 1 && audioRef.current.paused) {
+      audioRef.current.play();
     }
 
     const wallpaper = document.querySelector('.wallpaper');
