@@ -5,6 +5,7 @@ import { Animate } from 'react-simple-animate';
 import FirstQuote from './quotes/FirstQuote';
 import SecondQuote from './quotes/SecondQuote';
 import ThirdQuote from './quotes/ThirdQuote';
+import FourthQuote from './quotes/FourthQuote';
 
 const Greeting = ({ data, setData }) => {
   const [imageLoad, setImageLoad] = useState(false);
@@ -27,7 +28,9 @@ const Greeting = ({ data, setData }) => {
   }, [data]);
 
   return (
-    <div className="centered-content" style={{ height: 'inherit', top: '45%' }}>
+    <div
+      className="centered-content"
+      style={{ height: 'inherit', top: stage === 2 ? '45%' : '50%' }}>
       <div className="stickers">
         {stickers.map((item, index) => {
           return (
@@ -52,7 +55,7 @@ const Greeting = ({ data, setData }) => {
               setShowNext(true);
             }
           }}>
-          Hai {name} 👋🪅
+          Halo {name} 👋🪅
         </TypeIt>
       </p>
 
@@ -66,6 +69,8 @@ const Greeting = ({ data, setData }) => {
           {stage === 1 && <SecondQuote data={data} setData={setData} />}
 
           {stage === 2 && <ThirdQuote data={data} setData={setData} />}
+
+          {stage === 3 && <FourthQuote data={data} />}
         </blockquote>
       </Animate>
     </div>

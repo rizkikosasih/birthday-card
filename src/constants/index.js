@@ -54,16 +54,16 @@ export const stickers = [
     src: catDancing
   },
   {
+    name: 'catPeach',
+    src: catPeach
+  },
+  {
     name: 'catForYou',
     src: catForYou
   },
   {
     name: 'catMochi',
     src: catMochi
-  },
-  {
-    name: 'catPeach',
-    src: catPeach
   },
   {
     name: 'catPeekABoo',
@@ -83,4 +83,4 @@ export const stickers = [
   }
 ];
 
-export const greetingText = ['Aku punya sesuatu nih 😜💝'];
+export const myNumber = 'whatsapp number 62';

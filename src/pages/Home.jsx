@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import Opening from '../components/Opening';
-import { MySwal, Toast } from '../constants';
+import { MySwal } from '../constants';
 import ParallaxStars from '../components/ParallaxStars';
 import Greeting from '../components/Greeting';
 
