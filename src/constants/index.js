@@ -1,8 +1,8 @@
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 
-export const MySwal = withReactContent(Swal);
-export const Toast = MySwal.mixin({
+export const mySwal = withReactContent(Swal);
+export const Toast = mySwal.mixin({
   toast: true,
   position: 'top-end',
   showConfirmButton: false,
@@ -14,27 +14,11 @@ import catBye from './../assets/gif/catBye.gif';
 import catDancing from './../assets/gif/catDancing.gif';
 import catForYou from './../assets/gif/catForYou.gif';
 import catHeart from './../assets/gif/catHeart.gif';
-import catMochi from './../assets/gif/catMochi.gif';
-import catPeach from './../assets/gif/catPeach.gif';
 import catPeekABoo from './../assets/gif/catPeekABoo.gif';
 import catPlease from './../assets/gif/catPlease.gif';
 import catWink from './../assets/gif/catWink.gif';
-import catXD from './../assets/gif/catXD.gif';
-import catYeah from './../assets/gif/catYeah.gif';
 
-export {
-  catBye,
-  catDancing,
-  catForYou,
-  catHeart,
-  catMochi,
-  catPeach,
-  catPeekABoo,
-  catPlease,
-  catWink,
-  catXD,
-  catYeah
-};
+export { catForYou, catPeekABoo, catBye };
 
 export const stickers = [
   {
@@ -54,33 +38,9 @@ export const stickers = [
     src: catDancing
   },
   {
-    name: 'catPeach',
-    src: catPeach
-  },
-  {
-    name: 'catForYou',
-    src: catForYou
-  },
-  {
-    name: 'catMochi',
-    src: catMochi
-  },
-  {
-    name: 'catPeekABoo',
-    src: catPeekABoo
-  },
-  {
-    name: 'catXD',
-    src: catXD
-  },
-  {
-    name: 'catYeah',
-    src: catYeah
-  },
-  {
     name: 'catBye',
     src: catBye
   }
 ];
 
-export const myNumber = 'whatsapp number 62';
+export const myNumber = '62 nomornya';
