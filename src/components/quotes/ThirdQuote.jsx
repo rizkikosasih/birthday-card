@@ -10,6 +10,13 @@ const ThirdQuote = ({ data, setData }) => {
   const { stage, name } = data;
 
   useEffect(() => {
+    const wallpaper = document.querySelector('.wallpaper');
+    if (thirdStage % 2 === 1) {
+      wallpaper.style.transform = 'scale(1.3)';
+    } else {
+      wallpaper.style.transform = 'scale(1)';
+    }
+
     const handleButtonNext = (evt) => {
       if (thirdStage === 6) {
         evt.currentTarget.classList.remove('show');
@@ -46,7 +53,7 @@ const ThirdQuote = ({ data, setData }) => {
               showCancelButton: false,
               showConfirmButton: false,
               title: result.isConfirmed
-                ? 'Gajadi deh soalnya kamu bau wleee 😜'
+                ? 'Gajadi deh soalnya kamu jelek wleee 😜'
                 : 'Yaudah kalo gamau mah 😅',
               timer: 3000,
               timerProgressBar: true,
