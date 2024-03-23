@@ -43,25 +43,25 @@ body {
   }
 
   .centered-content {
-    @apply flex flex-col items-center justify-center w-full h-screen fixed top-1/2 left-1/2 transform-center;
+    @apply flex flex-col items-center justify-center w-full absolute top-1/2 left-1/2 transform-center;
   }
 
   .container-parallax-stars {
     background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
-    @apply relative w-full h-screen overflow-hidden;
+    @apply relative w-full min-h-screen overflow-hidden;
   }
 
   img.wallpaper {
     content: url('/src/assets/gif/starGalaxy.gif');
-    @apply bg-cover w-full min-h-screen transition-all duration-[1.5s];
+    @apply bg-cover w-full h-screen transition-all duration-[1s];
   }
 
   .opening-image {
-    @apply w-64 h-64 cursor-pointer;
+    @apply w-64 h-64 cursor-pointer transition-all duration-[0.5s];
   }
 
   .opening-image:hover {
-    @apply scale-90;
+    @apply scale-90 transition-all duration-[0.5s];
   }
 
   .text-gradient {
@@ -77,7 +77,7 @@ body {
 
   .stickers img {
     background: rgba(255, 255, 255, .2);
-    box-shadow: 0 4px 30px rgba(255,255,255, 0.3);
+    box-shadow: 0 4px 30px rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     border: 1px solid rgba(255, 255, 255, 0.3);
@@ -96,7 +96,7 @@ body {
     background: rgba(0, 0, 0, .3);
     border-radius: 18px 0 18px 0;
     border-style: double;
-    box-shadow: rgba(255,255,255, 0.4) 0px 7px 30px 0px;
+    box-shadow: rgba(255, 255, 255, 0.4) 0px 7px 30px 0px;
     text-shadow: 0px 2px 2px rgba(4, 3, 3, 0.8);
     @apply relative w-[300px] sm:w-[400px] text-center leading-[1.3em] p-8 text-white;
   }
