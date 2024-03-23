@@ -32,7 +32,7 @@ const SecondQuote = ({ data, setData }) => {
   return (
     <div className="second-quote" ref={secondRef}>
       <Animate play={stage === 1} start={{ opacity: 0 }} end={{ opacity: 1 }}>
-        <div className="text-xl font-semibold">Tekan hati dibawah ini ya! 🥹</div>
+        <div className="text-xl font-semibold">Tekan hati dibawah ini ya! 👇</div>
         <div className="flex justify-center mt-4 gap-4">
           <AnimateGroup play={stage === 1}>
             {[1, 2, 3, 4].map((item) => {

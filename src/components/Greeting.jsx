@@ -55,7 +55,7 @@ const Greeting = ({ data, setData }) => {
               setShowNext(true);
             }
           }}>
-          Halo {name} 👋🪅
+          Halo {name} 👋🤩
         </TypeIt>
       </p>
 

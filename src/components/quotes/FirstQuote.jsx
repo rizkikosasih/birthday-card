@@ -16,7 +16,7 @@ const FirstQuote = () => {
             setShowNext(true);
           }
         }}>
-        Aku punya sesuatu nih 😜🫣
+        Aku punya sesuatu nih 😜🤭
       </TypeIt>
 
       {showNext && (

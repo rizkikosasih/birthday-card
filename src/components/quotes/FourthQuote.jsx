@@ -86,7 +86,7 @@ const FourthQuote = ({ data, setData }) => {
               }
             }}>
             Oh ya, semoga di hari spesialmu ini kamu dapat menjadi pribadi yang lebih baik
-            yaa.. 🪄🎉🎊
+            yaa.. 😊😊😊
           </TypeIt>
         )}
 
